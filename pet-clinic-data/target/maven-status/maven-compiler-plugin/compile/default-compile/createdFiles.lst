@@ -1,5 +1,9 @@
 model\PetType.class
+services\OwnerService.class
+services\VetService.class
 model\Pet.class
 model\Vet.class
+model\BaseEntity.class
+services\PetService.class
 model\Owner.class
 model\Person.class
