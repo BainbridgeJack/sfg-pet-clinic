@@ -1,6 +1,7 @@
 model\PetType.class
 services\OwnerService.class
 services\VetService.class
+services\CrudService.class
 model\Pet.class
 model\Vet.class
 model\BaseEntity.class
