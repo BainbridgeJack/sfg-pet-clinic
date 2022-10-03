@@ -8,5 +8,18 @@
 
 <h1 th:text="'List of Pet Owners'">List of Pet Owners...</h1>
 
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    <tr th:each="owner : ${owners}">
+        <th th:text="${owner.id}">1</th>
+        <th th:text="${owner.firstName}">Joe</th>
+        <th th:text="${owner.lastName}">Buck</th>
+    </tr>
+</table>
+
 </body>
 </html>
