@@ -56,4 +56,8 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 
         return nextId;
     }
+
+    protected T findByLastName(String lastName) {
+        return map.get(lastName);
+    }
 }
