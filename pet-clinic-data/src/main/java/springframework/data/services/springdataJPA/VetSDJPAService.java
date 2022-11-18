@@ -9,6 +9,9 @@ import springframework.data.services.VetService;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Add profile of 'springdatajpa' that we NEED to activated to then activate the bean in springContext to be used.
+ */
 @Service
 @Profile("springdatajpa")
 public class VetSDJPAService implements VetService {
