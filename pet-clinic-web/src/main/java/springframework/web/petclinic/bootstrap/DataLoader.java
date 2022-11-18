@@ -3,13 +3,9 @@ package springframework.web.petclinic.bootstrap;
 import springframework.data.model.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import springframework.data.services.OwnerService;
-import springframework.data.services.PetTypeService;
-import springframework.data.services.SpecialtyService;
-import springframework.data.services.VetService;
+import springframework.data.services.*;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 /**
  * Spring boot specific CommandLineRunner to load data into out application on start up.
@@ -22,12 +18,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     private void loadData() {
@@ -77,6 +75,16 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Owners have been loaded...");
         System.out.println("Pets have been loaded...");
+
+        /**
+         * INITIALIZE VISITS
+         */
+        Visit catVisit = new Visit();
+        catVisit.setPet(testingPet);
+        catVisit.setLocalDate(LocalDate.now());
+        catVisit.setDescription("Sneezing Cat ");
+
+        visitService.save(catVisit);
 
         /**
          * INITIALIZE VETS + SPECIALTIES
