@@ -2,6 +2,7 @@ package springframework.data.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "pets")
@@ -17,6 +18,9 @@ public class Pet extends BaseEntity {
     private LocalDate birthDate;
     @Column(name = "name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visit;
 
     public PetType getPetType() {
         return petType;
@@ -48,5 +52,13 @@ public class Pet extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Visit> getVisit() {
+        return visit;
+    }
+
+    public void setVisit(Set<Visit> visit) {
+        this.visit = visit;
     }
 }
